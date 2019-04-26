@@ -1,9 +1,17 @@
 Add your general design and decision comments here:
 
-
+The repo came with redux installed as a dependency but the app was small enough that i
+chose not to use it, and instead just passed state along component-to-component in the 
+"traditional" manner. If it was much larger i would definitely connect the components
+to the redux store, write some reducers, and map out actions for each component.
 
 
 
 
 Feedback regarding this exam is always welcomed.
 What did you like? What didn't you like? What was missing?
+
+
+The repo that I forked has an outdated version of react and react-dom -- these versions
+lack features that most react devs love now, including fragments and hooks! I had to
+update both packages before starting my design.

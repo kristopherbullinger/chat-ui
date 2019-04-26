@@ -12,10 +12,21 @@ body {
       font-size: 1.5em;
     }
   }
+
+  #message-input {
+    position: fixed;
+    bottom: 0;
+    width: 50%;
+    margin-left: 25%;
+  }
+
+  #chat-window {
+    height: 70vh;
+  }
+
+  .message {
+    font-size: 2em;
+    margin-top: 0em;
+    margin-bottom: 15px;
+  }
 }
-
-
-
-
-
-
