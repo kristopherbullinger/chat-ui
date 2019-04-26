@@ -24,6 +24,11 @@ body {
     height: 70vh;
   }
 
+  #message-window {
+    max-height: 100%;
+    overflow-y: scroll;
+  }
+
   .message {
     font-size: 2em;
     margin-top: 0em;
