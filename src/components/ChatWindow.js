@@ -8,7 +8,7 @@ const ChatWindow = (props) => {
 
   return (
     <div id="chat-window">
-      <MessagesWindow messages={props.messages}/>
+      <MessagesWindow messages={props.messages} username={props.username}/>
       <MessageInput sendMessage={props.sendMessage}/>
     </div>
   )

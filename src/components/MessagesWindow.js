@@ -8,11 +8,13 @@ const MessagesWindow = props => {
 
   const renderMessages = () => {
     return props.messages.map( (msg, i) => {
-      return <p key={i}
-                className="message"
+      const self = msg.username === props.username;
+      const innerText = self ? `${msg.text}` : `${msg.username}: ${msg.text}`
+      return <div className={self ? "clearfix" : ""}><span key={i}
+                className={"message" + (self ? " self" : "")}
                 ref={i === props.messages.length - 1 ? scrollRef : null}>
-                {msg.username}: {msg.text}
-              </p>})
+                {innerText}
+              </span></div>})
 
   }
 

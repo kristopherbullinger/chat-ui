@@ -56,7 +56,9 @@ class App extends React.Component {
         </Container>
         <Container>
         {this.state.loggedIn ?
-            <ChatWindow messages={this.state.messages} sendMessage={this.sendMessage}/>
+            <ChatWindow messages={this.state.messages}
+                        sendMessage={this.sendMessage}
+                        username={this.state.username}/>
             : <React.Fragment>
                 <input type="text" value={this.state.username} onChange={e => this.setState({username: e.target.value})}/>
                 <button onClick={() => this.setState({loggedIn: true})}>Set Username</button>
