@@ -42,13 +42,16 @@ body {
     }
     textarea {
       resize: none;
+      border: 1px solid gray;
       border-radius: 3px;
       width: 30%;
       min-width: 150px;
       margin-left: 10px;
+      font-weight: 200;
     }
     input {
       border-radius: 4px;
+      font-weight: 100;
     }
     span {
       width: 30%;
@@ -87,6 +90,11 @@ body {
     padding: 0.5em 10px 0.5em;
   }
 
+  .message.self {
+    background-color: #4eb256;
+    color: white;
+  }
+
   .message-username {
     color: #BBB;
     margin: 0 10px 0;
@@ -94,11 +102,6 @@ body {
 
   .message-username.self {
     text-align: right;
-  }
-
-  .message.self {
-    background-color: #4eb256;
-    color: white;
   }
 
   .clearfix::after {
