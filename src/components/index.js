@@ -32,6 +32,9 @@ class App extends React.Component {
   }
 
   sendMessage = (messageData) => {
+    let sentDate = new Date();
+    messageData.sentTime = sentDate.getHours() > 12 ? `${sentDate.getHours() - 12}:${sentDate.getMinutes()} PM` : `${sentDate.getHours()}:${sentDate.getMinutes()} AM`
+    console.log(messageData);
     this.setState({username: messageData.username})
     if (messageData.username && messageData.text) {
       this.props.socket.emit('spotim/chat', messageData);
