@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 
 const MessageInput = (props) => {
   const [text, setText] = useState("");
+  //user can use a different username with each submission. when they change usernames, only messages matching
+  //the newly assigned username will display as though they were sent from this user
   const [username, setUsername] = useState("");
   const [avatar, setAvatar] = useState("");
 
@@ -10,11 +12,14 @@ const MessageInput = (props) => {
   const usernameRef = React.createRef();
 
   const handleSubmit = () => {
+    //safeguard against emitting empty or anonymous messages
     if (text && username) {
       let message = {avatar, text: text.trim(), username };
       props.sendMessage(message);
       setText("");
     }
+
+    //if text or username is empty, focus appropriate input field to prompt user to enter value
     if (!text) {
       textRef.current.focus();
     } else if (!username) {
@@ -37,6 +42,7 @@ const MessageInput = (props) => {
   }
 
   const handleKeyPress = e => {
+    //allow user to submit message with enter key
     if (e.key === "Enter") {
       e.preventDefault();
       handleSubmit();

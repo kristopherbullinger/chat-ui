@@ -16,6 +16,8 @@ socket.on("disconnect", function() {
   console.log("disconnected from chat server!");
 });
 
+
+//allow component to receive messages and execute callback such as setState
 function subscribeToMessages (callback) {
   socket.on('spotim/chat', (data) => callback(data))
 }

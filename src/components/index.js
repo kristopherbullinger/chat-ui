@@ -24,23 +24,31 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    //connect to chat server upon mounting
     subscribeToMessages(this.receiveMessage);
   }
 
   receiveMessage = data => {
     console.log(data);
+    //safeguard against messages which do not conform to assigned structure
     if (typeof data.text === "string" && typeof data.username === "string" && typeof data.avatar === "string") {
       this.setState({messages: [...this.state.messages, data]});
     }
   }
 
   sendMessage = (messageData) => {
+
+    //format a timestamp for the message
     let sentDate = new Date();
     let hours = sentDate.getHours() > 12 ? sentDate.getHours() - 12 : sentDate.getHours();
     let minutes = sentDate.getMinutes() < 10 ? "0" + sentDate.getMinutes() : sentDate.getMinutes();
     messageData.sentTime = sentDate.getHours() > 12 ? `${hours}:${minutes} PM` : `${hours}:${minutes} AM`
     console.log(messageData);
+
+    //keep track of current username for styling purposes
     this.setState({username: messageData.username})
+
+    //do not emit message without username or message content
     if (messageData.username && messageData.text) {
       this.props.socket.emit('spotim/chat', messageData);
     }
