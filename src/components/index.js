@@ -28,12 +28,15 @@ class App extends React.Component {
   }
 
   receiveMessage = data => {
+    console.log(data);
     this.setState({messages: [...this.state.messages, data]});
   }
 
   sendMessage = (messageData) => {
     let sentDate = new Date();
-    messageData.sentTime = sentDate.getHours() > 12 ? `${sentDate.getHours() - 12}:${sentDate.getMinutes()} PM` : `${sentDate.getHours()}:${sentDate.getMinutes()} AM`
+    let hours = sentDate.getHours() > 12 ? sentDate.getHours() - 12 : sentDate.getHours();
+    let minutes = sentDate.getMinutes() < 10 ? "0" + sentDate.getMinutes() : sentDate.getMinutes();
+    messageData.sentTime = sentDate.getHours() > 12 ? `${hours}:${minutes} PM` : `${hours}:${minutes} AM`
     console.log(messageData);
     this.setState({username: messageData.username})
     if (messageData.username && messageData.text) {
