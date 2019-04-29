@@ -20,8 +20,7 @@ class App extends React.Component {
 
   state = {
     messages: [],
-    username: "",
-    loggedIn: false
+    username: ""
   }
 
   componentDidMount() {
@@ -33,10 +32,9 @@ class App extends React.Component {
   }
 
   sendMessage = (messageData) => {
-    if (this.state.loggedIn && messageData.text) {
-      this.props.socket.emit('spotim/chat', Object.assign(messageData, {username: this.state.username}));
-    } else {
-      window.alert("Please do not send anonymous or empty messages!")
+    this.setState({username: messageData.username})
+    if (messageData.username && messageData.text) {
+      this.props.socket.emit('spotim/chat', messageData);
     }
   }
 
@@ -55,14 +53,9 @@ class App extends React.Component {
           </div>
         </Container>
         <Container>
-        {this.state.loggedIn ?
-            <ChatWindow messages={this.state.messages}
+          <ChatWindow messages={this.state.messages}
                         sendMessage={this.sendMessage}
                         username={this.state.username}/>
-            : <React.Fragment>
-                <input type="text" value={this.state.username} onChange={e => this.setState({username: e.target.value})}/>
-                <button onClick={() => this.setState({loggedIn: true})}>Set Username</button>
-              </React.Fragment>}
         </Container>
       </React.Fragment>)
   }

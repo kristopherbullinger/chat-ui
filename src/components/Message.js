@@ -11,13 +11,12 @@ const Message = props => {
   const scrollRef = lastMessage ? React.createRef() : null;
 
   useEffect( () => {
-    console.log(lastMessage, scrollRef)
     lastMessage ? scrollRef.current.scrollIntoView() : null;
   })
 
   return (<div className="clearfix" ref={scrollRef} style={{marginTop: 5}}>
             {self ? null
-                  : <div class="message-username">
+                  : <div className="message-username">
                       {msg.username}
                     </div>}
             <span className={"message" + (self ? " self" : "")}>
