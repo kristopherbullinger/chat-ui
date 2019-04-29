@@ -22,8 +22,16 @@ const MessageInput = (props) => {
 
   return (
     <div id="message-input">
-      <input name="message" type="text" onChange={handleChange} onKeyPress={handleKeyPress} value={text} placeholder="Type something..."/>
-      <button onClick={handleSubmit}>Send</button>
+      <input name="message"
+             type="text"
+             onChange={handleChange}
+             onKeyPress={handleKeyPress}
+             value={text}
+             placeholder="Type something..."/>
+      <button
+        onClick={handleSubmit}>
+        Send
+      </button>
     </div>
   )
 }

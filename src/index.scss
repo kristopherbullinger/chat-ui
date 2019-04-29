@@ -31,17 +31,26 @@ body {
   }
 
   .message {
-    background-color: #6b98bc;
+    background-color: #96beff;
     border-radius: 9px;
     font-size: 1.45em;
-    margin: 8px 10px 15px 2px;
+    margin: 0px 10px 5px 10px;
     max-width: 70%;
     line-height: 1.2em;
     display: inline-block;
     padding: 0.5em 10px 0.5em;
   }
 
-  .self {
+  .message-username {
+    color: #BBB;
+    margin: 0 10px 0;
+  }
+
+  .message-username.self {
+    text-align: right;
+  }
+
+  .message.self {
     background-color: #4eb256;
     color: white;
     float: right;
