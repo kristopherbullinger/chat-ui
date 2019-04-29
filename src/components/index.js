@@ -29,7 +29,9 @@ class App extends React.Component {
 
   receiveMessage = data => {
     console.log(data);
-    this.setState({messages: [...this.state.messages, data]});
+    if (typeof data.text === "string" && typeof data.username === "string" && typeof data.avatar === "string") {
+      this.setState({messages: [...this.state.messages, data]});
+    }
   }
 
   sendMessage = (messageData) => {

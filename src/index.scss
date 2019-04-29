@@ -62,6 +62,14 @@ body {
     vertical-align: middle;
   }
 
+  .flexContainer {
+    display: flex;
+  }
+
+  .flexContainer.right {
+    justify-content: flex-end;
+  }
+
   .message {
     background-color: #96beff;
     border-radius: 9px;
@@ -85,7 +93,6 @@ body {
   .message.self {
     background-color: #4eb256;
     color: white;
-    float: right;
   }
 
   .clearfix::after {
