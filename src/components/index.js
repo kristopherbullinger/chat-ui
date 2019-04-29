@@ -1,6 +1,3 @@
-
-//This is your top level React component, you may change everything
-
 import React from 'react'
 import logo from '../assets/spotim-logo.jpg'
 import {Container, Image} from 'semantic-ui-react'
@@ -37,16 +34,14 @@ class App extends React.Component {
   }
 
   sendMessage = (messageData) => {
-
     //format a timestamp for the message
     let sentDate = new Date();
     let hours = sentDate.getHours() > 12 ? sentDate.getHours() - 12 : sentDate.getHours();
     let minutes = sentDate.getMinutes() < 10 ? "0" + sentDate.getMinutes() : sentDate.getMinutes();
     messageData.sentTime = sentDate.getHours() > 12 ? `${hours}:${minutes} PM` : `${hours}:${minutes} AM`
-    console.log(messageData);
 
     //keep track of current username for styling purposes
-    this.setState({username: messageData.username})
+    this.setState({username: messageData.username});
 
     //do not emit message without username or message content
     if (messageData.username && messageData.text) {
@@ -70,8 +65,8 @@ class App extends React.Component {
         </Container>
         <Container>
           <ChatWindow messages={this.state.messages}
-                        sendMessage={this.sendMessage}
-                        username={this.state.username}/>
+                      sendMessage={this.sendMessage}
+                      username={this.state.username}/>
         </Container>
       </React.Fragment>)
   }

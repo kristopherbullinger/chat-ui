@@ -1,16 +1,44 @@
 Add your general design and decision comments here:
 
+The way it is designed, the user can change their name with every new message. If a user changes their name,
+only the messages sent by a user with a name that matches their current one will be styled as a "self" message.
+Therefore a message may be styled as a "self" message at one point, then later as a received message. It would
+be an easy change to make the name input field and/or avatar be replaced with some text (and therefore uneditable)
+after an initial username assignment.
+
+Each sent message displays with the username, a timestamp, the chosen avatar, and the message text. Messages
+sent by other users are blue and appear on the left of the chatbox with the avatar to the left of the message,
+and messages sent by the current user are green and appear on the right side with the avatar to the right of the
+message.
+
+If a user attempts to send a message without a username or message, the "send message" function instead will
+focus on the required text field. For example, if the user provides a message but not a name and hits enter,
+the username text input field will receive focus (and the message will not be sent), prompting the user to provide a value.
+
+The user has the option of providing a URL for an avatar which will appear next to their message. If they
+do not provide one, the image will default to one of a dog wearing sunglasses. Additionally, if the user provides
+an invalid url, the rendering error will be caught and the default image displayed instead.
+
+With the help of refs, I was able to make it so that every time a new message is received, the ChatWindow which
+holds all messages automatically scrolls to the bottom to make the new message immediately viewable. With a little
+more time, another parameter (shouldScrollIntoView) could be introduced into the component state to allow the user to
+scroll up and view older messages without being forced to the bottom of the chat window with each new message.
+This parameter could be set to true by default or when the user manually scrolls to the bottom of the chat window,
+and false when the user scrolls up, and could conditionally override the scrollIntoView effect.
+
 The repo came with redux installed as a dependency but the app was small enough that i
-chose not to use it, and instead just passed state along component-to-component in the 
+chose not to use it, and instead just passed state along component-to-component in the
 "traditional" manner. If it was much larger i would definitely connect the components
 to the redux store, write some reducers, and map out actions for each component.
 
-
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Feedback regarding this exam is always welcomed.
 What did you like? What didn't you like? What was missing?
 
+I had never used websockets before so the boilerplate code provided was adequate -- enough to get me going but
+not so simple that i didn't have to do a little research to get how it works and begin integrating app state with
+the information returned from the server.
 
 The repo that I forked has an outdated version of react and react-dom -- these versions
 lack features that most react devs love now, including fragments and hooks! I had to

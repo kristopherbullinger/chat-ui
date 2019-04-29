@@ -1,4 +1,4 @@
-import React, { component } from 'react'
+import React from 'react'
 import MessagesWindow from './MessagesWindow.js'
 import MessageInput from './MessageInput.js'
 

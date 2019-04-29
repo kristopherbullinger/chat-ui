@@ -14,7 +14,9 @@ const Message = props => {
 
   useEffect( () => {
     //if this message is the newest one, it will scroll into view
-    lastMessage ? scrollRef.current.scrollIntoView() : null;
+    if (lastMessage) {
+      scrollRef.current.scrollIntoView()
+    }
   })
 
   const handleImgError = e => {
@@ -30,17 +32,17 @@ const Message = props => {
       </div>
       <div className={"flexContainer" + (self ? " right" : null)}>
         {!self ? <img className="avatar"
-             src={msg.avatar}
-             alt="spotim user avatar"
-             onError={handleImgError}/>
+                      src={msg.avatar}
+                      alt="spotim user avatar"
+                      onError={handleImgError}/>
               : null}
         <span className={"message" + (self ? " self" : "")}>
             {msg.text}
         </span>
         {self ? <img className="avatar"
-             src={msg.avatar}
-             alt="spotim user avatar"
-             onError={handleImgError}/>
+                     src={msg.avatar}
+                     alt="spotim user avatar"
+                     onError={handleImgError}/>
               : null}
       </div>
     </div>

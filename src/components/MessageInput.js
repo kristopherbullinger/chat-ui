@@ -38,6 +38,8 @@ const MessageInput = (props) => {
         case "text":
           setText(e.target.value);
           break;
+        default:
+          break;
       }
   }
 

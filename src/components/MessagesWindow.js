@@ -1,11 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Message from './Message.js'
 
-
 const MessagesWindow = props => {
-
-  //this ref is used along with the "lastMessage" parameter to scroll the newest message into view automatically
-  const scrollRef = React.createRef();
 
   const renderMessages = () => props.messages.map( (msg,i) => {
     return (<Message key={i}
